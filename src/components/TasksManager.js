@@ -22,12 +22,24 @@ class TasksManager extends React.Component {
       tasks: tasks.map((task) => {
         const { id, isRunning } = task
         if (taskId !== id) return task
-        return {
+        const changedTask = {
           ...task,
           isRunning: !isRunning
         }
+        this.updateTask(changedTask,taskId) // update
+        return changedTask
       })
     }))
+  }
+
+  updateTask(task,id){
+    const options = { method: 'PUT', body: JSON.stringify(task), headers: { 'Content-Type': 'application/json' } }
+
+        fetch(`${this.api}/${id}`,options)
+        .then(response => {
+          if (response.ok) return response.json()
+          return Promise.reject(response)
+        })
   }
 
   startTimer (taskId) { 
@@ -52,13 +64,16 @@ class TasksManager extends React.Component {
       tasks: tasks.map((task) => {
         const { id } = task
         if (taskId !== id) return task
-        return {
+        const changedTask = {
           ...task,
           isDone: true,
           isRunning: false
         }
+        this.updateTask(changedTask,taskId) // update
+        return changedTask
       })
     }))
+
   }
 
   deleteTask (taskId) {
@@ -68,15 +83,18 @@ class TasksManager extends React.Component {
       tasks: tasks.map((task) => {
         const { id } = task
         if (taskId !== id) return task
-        return {
+        const changedTask = {
           ...task,
           isRemoved: true
         }
+        this.updateTask(changedTask,taskId) // update
+        return changedTask
       })
     }))
   }
 
   componentDidUpdate () {
+    
   }
 
   handleChange = e => {

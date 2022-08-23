@@ -3,9 +3,9 @@
     {
       "name": "Wynies smieci",
       "id": 1,
-      "time": 0,
+      "time": 8,
       "isRunning": false,
-      "isDone": false,
+      "isDone": true,
       "isRemoved": false
     },
     {
@@ -17,20 +17,20 @@
       "isRemoved": false
     },
     {
-      "name": "Umyj auto",
-      "id": 3,
+      "name": "Znajdź zajęcie",
       "time": 0,
       "isRunning": false,
       "isDone": false,
-      "isRemoved": false
+      "isRemoved": false,
+      "id": 3
     },
     {
       "name": "Obierz ziemniaki",
       "id": 4,
-      "time": 0,
+      "time": 2,
       "isRunning": false,
-      "isDone": false,
-      "isRemoved": false
+      "isDone": true,
+      "isRemoved": true
     },
     {
       "name": "Zrób zakupy",
