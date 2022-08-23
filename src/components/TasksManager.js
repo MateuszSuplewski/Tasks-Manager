@@ -3,47 +3,15 @@ import React from 'react'
 class TasksManager extends React.Component {
   state = {
     task: '',
-    tasks: [
-      {
-        name: 'Wynies smieci',
-        id: '1',
-        time: 0,
-        isRunning: false,
-        isDone: false,
-        isRemoved: false
-      },
-      {
-        name: 'Posprzątaj pokój',
-        id: '2',
-        time: 0,
-        isRunning: false,
-        isDone: false,
-        isRemoved: false
-      },
-      {
-        name: 'Umyj auto',
-        id: '3',
-        time: 0,
-        isRunning: false,
-        isDone: false,
-        isRemoved: false
-      },
-      {
-        name: 'Obierz ziemniaki',
-        id: '4',
-        time: 0,
-        isRunning: false,
-        isDone: false,
-        isRemoved: false
-      }
-    ]
+    tasks: []
   }
   intervalId = ''
+  api = 'http://localhost:3005/tasks'
 
-  toggleTimer(taskId){ // przełączanie start stop zaimplementowane
+  toggleTimer(taskId){ 
     const { tasks } = this.state
 
-    const currentTask = tasks.find(task => task.id === taskId) // szukanie taska z odpowiednim id zeby uruchomic w nim counter!
+    const currentTask = tasks.find(task => task.id === taskId) 
     if (!currentTask.isRunning) {
       this.intervalId = setInterval(() => this.startTimer(taskId), 1000)
     } else {
@@ -118,21 +86,42 @@ class TasksManager extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-
     const {task,tasks} = this.state
-    
+
     const newTask = {
       name: task,
-      id: '10',  // dodac custom id pobieranie z api. /// dodac cale api :)
       time: 0,
       isRunning: false,
       isDone: false,
       isRemoved: false
     }
 
-    this.setState({
-      tasks: [...tasks,newTask],
-      task: ''
+    const options = { method: 'POST', body: JSON.stringify(newTask), headers: { 'Content-Type': 'application/json' } }
+
+    fetch(this.api,options)
+    .then(response => {
+      if (response.ok) return response.json()
+      return Promise.reject(response)
+    })
+    .then(data => {
+      const id = data.id
+      this.setState({
+        tasks: [...tasks,{...newTask,id}],
+        task: ''
+      })
+    })
+  }
+
+  componentDidMount(){
+    fetch(this.api)
+    .then(response => {
+      if (response.ok) return response.json()
+      return Promise.reject(response)
+    })
+    .then(data => {
+      this.setState({
+        tasks: [...data],
+      })
     })
   }
 

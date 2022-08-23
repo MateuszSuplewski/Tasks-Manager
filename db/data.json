@@ -1,0 +1,52 @@
+{
+  "tasks": [
+    {
+      "name": "Wynies smieci",
+      "id": 1,
+      "time": 0,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false
+    },
+    {
+      "name": "Posprzątaj pokój",
+      "id": 2,
+      "time": 0,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false
+    },
+    {
+      "name": "Umyj auto",
+      "id": 3,
+      "time": 0,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false
+    },
+    {
+      "name": "Obierz ziemniaki",
+      "id": 4,
+      "time": 0,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false
+    },
+    {
+      "name": "Zrób zakupy",
+      "time": 0,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false,
+      "id": 5
+    },
+    {
+      "name": "Znajdź zajęcie",
+      "time": 0,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false,
+      "id": 6
+    }
+  ]
+}
