@@ -5,20 +5,20 @@
       "id": 1,
       "time": 8,
       "isRunning": false,
-      "isDone": true,
+      "isDone": false,
       "isRemoved": false
     },
     {
       "name": "Posprzątaj pokój",
       "id": 2,
-      "time": 0,
+      "time": 4,
       "isRunning": false,
-      "isDone": false,
+      "isDone": true,
       "isRemoved": false
     },
     {
       "name": "Znajdź zajęcie",
-      "time": 0,
+      "time": 6,
       "isRunning": false,
       "isDone": false,
       "isRemoved": false,
@@ -29,12 +29,12 @@
       "id": 4,
       "time": 2,
       "isRunning": false,
-      "isDone": true,
-      "isRemoved": true
+      "isDone": false,
+      "isRemoved": false
     },
     {
       "name": "Zrób zakupy",
-      "time": 0,
+      "time": 26,
       "isRunning": false,
       "isDone": false,
       "isRemoved": false,
@@ -42,11 +42,27 @@
     },
     {
       "name": "Znajdź zajęcie",
-      "time": 0,
+      "time": 10,
       "isRunning": false,
       "isDone": false,
       "isRemoved": false,
       "id": 6
+    },
+    {
+      "name": "Ucz się reacta",
+      "time": 33,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false,
+      "id": 7
+    },
+    {
+      "name": "Wyprowadź psa",
+      "time": 1,
+      "isRunning": false,
+      "isDone": false,
+      "isRemoved": false,
+      "id": 8
     }
   ]
 }
