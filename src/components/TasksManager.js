@@ -9,16 +9,12 @@ class TasksManager extends React.Component {
   intervalId = ''
   api = 'http://localhost:3005/tasks'
 
-  toggleTimer (taskId) { // implementacja do przemyślenia
+  toggleTimer (taskId) {
     const { tasks } = this.state
 
     const currentTask = tasks.find(task => task.id === taskId)
-    if (!currentTask.isRunning) {
-      this.intervalId = setInterval(() => this.incTime(taskId), 1000)
-    } else {
-      clearInterval(this.intervalId)
-    }
-
+    !currentTask.isRunning ? this.startTimer(taskId): this.stopTimer(taskId)
+    
     this.setState(() => ({
       tasks: tasks.map((task) => {
         const { id, isRunning } = task
@@ -30,11 +26,16 @@ class TasksManager extends React.Component {
     }))
   }
 
+  startTimer (taskId) {this.intervalId = setInterval(() => this.incTime(taskId), 1000)}
+
   stopTimer (taskId) {
     const { tasks } = this.state
-
     const currentTask = tasks.find(task => task.id === taskId)
-    if (currentTask.isRunning) clearInterval(this.intervalId)
+
+    if (currentTask.isRunning) {
+    clearInterval(this.intervalId)
+    this.intervalId = null
+    }
   }
 
   incTime (taskId) {
@@ -42,7 +43,7 @@ class TasksManager extends React.Component {
     this.setState(() => ({
       tasks: tasks.map(task => {
         const { id, isRunning, time } = task
-        if (id === taskId && isRunning) return { ...task, time: time + 1 }
+        if (id === taskId && isRunning) return { ...task, time: this.createUpdatedTimer(time) }
         return task
       })
     }))
@@ -76,11 +77,11 @@ class TasksManager extends React.Component {
     return sortedTasks.map(({ name, time, isRunning, isDone, id }) => {
       return (
         <section key={id}>
-          <header>{`${name} : ${time}`}</header>
+          <header className='task-content'>{`${name} : ${time}`}</header>
           <footer>
-            <button onClick={() => this.toggleTimer(id)} disabled={isDone}>{isRunning ? 'STOP' : 'START'}</button>
-            <button onClick={() => this.endTask(id)} disabled={isDone}>{isDone ? 'ZAKOŃCZONE' : 'ZAKOŃCZ'}</button>
-            <button onClick={() => this.removeTask(id)} disabled={!isDone}>USUŃ</button>
+            <button className={isRunning ? 'btn-stop' : 'btn-start'} onClick={() => this.toggleTimer(id)} disabled={(this.intervalId && !isRunning) || isDone }>{isRunning ? 'STOP' : 'START'}</button>
+            <button className='btn-end' onClick={() => this.endTask(id)} disabled={isDone}>{isDone ? 'ZAKOŃCZONE' : 'ZAKOŃCZ'}</button>
+            <button className='btn-delete' onClick={() => this.removeTask(id)} disabled={!isDone}>USUŃ</button>
           </footer>
         </section>)
     })
@@ -124,11 +125,35 @@ class TasksManager extends React.Component {
     const { task } = this.state
     return {
       name: task,
-      time: 0,
+      time: "00:00:00",
       isRunning: false,
       isDone: false,
       isRemoved: false
     }
+  }
+
+  createUpdatedTimer(time){
+
+    let hours = time.slice(0,2)
+    let minutes = time.slice(3,5)
+    let seconds = time.slice(6,8)
+
+    seconds = Number(seconds) + 1
+    if(Number(seconds) === 60) {
+      minutes = Number(minutes) + 1
+      seconds = 0
+    }
+
+    if(Number(minutes) === 60) {
+      hours = Number(hours) + 1
+      minutes = 0
+    }
+
+    if(Number(minutes) < 10) minutes = '0' + Number(minutes)
+    if(Number(hours) < 10) hours = '0' + Number(hours)
+    if(Number(seconds) < 10) seconds = '0' + Number(seconds)
+
+    return( `${hours}:${minutes}:${seconds}`)
   }
 
   handleInputChange = e => {
@@ -166,13 +191,10 @@ class TasksManager extends React.Component {
 
     return (
       <>
-        <ul>{this.insertTasks()}</ul>
+        <ul className='task-list'>{this.insertTasks()}</ul>
         <form onSubmit={this.handleFormSubmit}>
-          <label>
-          Nazwa zadania:
-            <input value={task} onChange={this.handleInputChange} />
-          </label>
-          <input type="submit" value="Dodaj" />
+          <input className='task-input' value={task} onChange={this.handleInputChange} placeholder='Wpisz nazwe zadania' />
+          <input className='task-submit' type="submit" value="Dodaj" disabled={!task} />
         </form>
       </>
     )

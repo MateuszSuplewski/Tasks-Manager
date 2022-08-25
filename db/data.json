@@ -3,7 +3,7 @@
     {
       "name": "Wynies smieci",
       "id": 1,
-      "time": 8,
+      "time": "10:00:03",
       "isRunning": false,
       "isDone": false,
       "isRemoved": false
@@ -11,54 +11,54 @@
     {
       "name": "Posprzątaj pokój",
       "id": 2,
-      "time": 4,
-      "isRunning": false,
-      "isDone": true,
-      "isRemoved": false
-    },
-    {
-      "name": "Znajdź zajęcie",
-      "time": 6,
+      "time": "00:00:13",
       "isRunning": false,
       "isDone": false,
-      "isRemoved": false,
-      "id": 3
+      "isRemoved": false
     },
     {
       "name": "Obierz ziemniaki",
-      "id": 4,
-      "time": 2,
+      "id": 3,
+      "time": "00:00:00",
       "isRunning": false,
       "isDone": false,
-      "isRemoved": false
+      "isRemoved": true
     },
     {
       "name": "Zrób zakupy",
-      "time": 26,
+      "time": "00:00:00",
       "isRunning": false,
       "isDone": false,
+      "isRemoved": false,
+      "id": 4
+    },
+    {
+      "name": "Znajdź zajęcie",
+      "time": "00:00:14",
+      "isRunning": false,
+      "isDone": true,
       "isRemoved": false,
       "id": 5
     },
     {
-      "name": "Znajdź zajęcie",
-      "time": 10,
+      "name": "Ucz się reacta",
+      "time": "00:00:00",
       "isRunning": false,
       "isDone": false,
       "isRemoved": false,
       "id": 6
     },
     {
-      "name": "Ucz się reacta",
-      "time": 33,
+      "name": "Wyprowadź psa",
+      "time": "00:00:06",
       "isRunning": false,
       "isDone": false,
       "isRemoved": false,
       "id": 7
     },
     {
-      "name": "Wyprowadź psa",
-      "time": 1,
+      "name": "Umyj psa",
+      "time": "00:00:05",
       "isRunning": false,
       "isDone": false,
       "isRemoved": false,
