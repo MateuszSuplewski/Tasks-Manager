@@ -1,3 +1,114 @@
 body {
-    background: #dcdcdc;
+    background: #5691df
 }
+
+*{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-weight: bold;
+}
+
+
+.btn-delete{
+    background-color: #F13C24;
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(190, 192, 187,0.6);
+    transition: all 0.5s ease;
+    color: white;
+}
+
+.btn-delete:hover{
+    background-color: #be1f0a;
+    box-shadow: 0px 8px 18px -10px rgba(66, 68, 90, 1);
+}
+
+.btn-end{
+    background-color: #e68d3b;
+    width: 120px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(190, 192, 187,0.6);
+    transition: all 0.5s ease;
+    color: white;
+}
+
+.btn-end:hover{
+    background-color: #db6d06;
+    box-shadow: 0px 8px 18px -10px rgba(66, 68, 90, 1);
+}
+
+.btn-start{
+    background-color: #32c23e;
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(190, 192, 187,0.6);
+    transition: all 0.5s ease;
+    color: white;
+}
+
+.btn-start:hover{
+    background-color: #12991d;
+    box-shadow: 0px 8px 18px -10px rgba(66, 68, 90, 1);
+}
+
+.btn-stop{
+    background-color: #FCD800;
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(190, 192, 187,0.6);
+    transition: all 0.5s ease;
+    color: white;
+}
+
+.btn-stop:hover{
+    background-color: #ecca05;
+    box-shadow: 0px 8px 18px -10px rgba(66, 68, 90, 1);
+}
+
+.task-content{
+    padding: 15px 0 5px 5px;
+}
+
+.task-input{
+    border: 1px solid rgba(190, 192, 187,0.6);
+    border-radius: 4px;
+    padding: 5px 0 5px 5px;
+    width: 200px;
+    height: 25px;
+    margin: 0 2px
+}
+
+.task-submit{
+    border: 1px solid rgba(190, 192, 187,0.6);
+    border-radius: 4px;
+    padding: 9px;
+    width: 70px;
+    background-color: #0853b6;
+    color: black;
+    transition: all 0.5s ease;
+}
+
+.task-submit:hover{
+    background-color: #043370;
+    color: white;
+    box-shadow: 0px 8px 18px -10px rgba(66, 68, 90, 1);
+}
+
+button:disabled, button:disabled:hover, .task-submit:disabled, .task-submit:disabled:hover {
+    background-color: #dddddd;
+    color: black;
+    box-shadow: none
+  }
+
+.task-list{
+    margin-block-start: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+
